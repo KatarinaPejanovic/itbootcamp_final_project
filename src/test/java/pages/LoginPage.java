@@ -53,7 +53,7 @@ public class LoginPage extends BasePage {
         return fakePassword;
     }
 
-    public String LoginErrorMssg() {
+    public String readLoginErrorMssg() {
         return loginError.getText();
     }
 

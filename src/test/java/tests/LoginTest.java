@@ -15,27 +15,27 @@ public class LoginTest extends BaseTest {
     }
 
     @Test
-    public void t1visitLoginPage() {
+    public void t1VisitLogin() {
         Assert.assertTrue(driver.getCurrentUrl().contains("/login"));
     }
 
     @Test
-    public void t2checkInputType() {
+    public void t2CheckInputType() {
         Assert.assertEquals(loginPage.getEmailAttributeType(), "email");
         Assert.assertEquals(loginPage.getPassAttributeType(), "password");
     }
 
     @Test
-    public void t3userNotExist() {
+    public void t3UserNotExist() {
         loginPage.doLogin(loginPage.getFakeEmail(), loginPage.getFakePassword());
-        Assert.assertTrue(loginPage.LoginErrorMssg().contains("User does not exists"));
+        Assert.assertTrue(loginPage.readLoginErrorMssg().contains("User does not exists"));
         Assert.assertTrue(driver.getCurrentUrl().contains("/login"));
     }
 
     @Test
-    public void t4wrongPass() {
+    public void t4WrongPass() {
         loginPage.doLogin("admin@admin.com", loginPage.getFakePassword());
-        Assert.assertTrue(loginPage.LoginErrorMssg().contains("Wrong password"));
+        Assert.assertTrue(loginPage.readLoginErrorMssg().contains("Wrong password"));
         Assert.assertTrue(driver.getCurrentUrl().contains("/login"));
     }
 
@@ -47,7 +47,7 @@ public class LoginTest extends BaseTest {
     }
 
     @Test
-    public void t6logout() throws InterruptedException {  //da li moze nesto da se skrati??
+    public void t6LogOut() throws InterruptedException {  //da li moze nesto da se skrati??
         Assert.assertTrue(homePage.getLogOut().isDisplayed());
         homePage.doLogOut();
         Thread.sleep(2000);
