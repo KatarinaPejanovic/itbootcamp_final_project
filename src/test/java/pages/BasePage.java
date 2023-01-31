@@ -14,4 +14,5 @@ public class BasePage {
         this.driverWait = driverWait;
         PageFactory.initElements(this.driver, this);
     }
+
 }

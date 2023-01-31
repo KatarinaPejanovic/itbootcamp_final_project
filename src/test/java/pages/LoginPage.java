@@ -56,4 +56,5 @@ public class LoginPage extends BasePage {
     public String LoginErrorMssg() {
         return loginError.getText();
     }
+
 }
