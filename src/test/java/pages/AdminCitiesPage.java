@@ -6,6 +6,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class AdminCitiesPage extends BasePage {
@@ -22,19 +23,42 @@ public class AdminCitiesPage extends BasePage {
     @FindBy(xpath = "//*[@id=\"app\"]/div[1]/main/div/div[2]/div/div[3]/div/div/div/div/div[1]")
     private WebElement citySavedMessage;
 
+    @FindBy(xpath = "//*[@id=\"app\"]/div[1]/main/div/div[2]/div/div[1]/div[2]/table/tbody/tr[1]/td[2]")
+    private WebElement allCities;
+
+    @FindBy(xpath = "//*[@id=\"edit\"]/span")
+    private WebElement editCityButton;
+
+    @FindBy(id = "search")
+    private WebElement search;
+
+    @FindBy(xpath = "//*[@id=\"app\"]/div[1]/main/div/div[2]/div/div[1]/div[2]/table/tbody/tr/td[2]")
+    private WebElement nameColumn;
+
+
     public AdminCitiesPage(WebDriver driver, WebDriverWait driverWait) {
         super(driver, driverWait);
     }
 
-    public void createNewCity() {
+    public void createNewCity(String fakeCity) {
         newItem.click();
-        String fakeCity = faker.address().city();
         insertName.sendKeys(fakeCity);
-        driverWait.until(ExpectedConditions.presenceOfElementLocated(By.className("btnSave v-btn v-btn--text theme--light v-size--default green--text text--lighten3")));
         saveButton.click();
     }
 
     public String readCitySavedMessage() {
         return citySavedMessage.getText();
+    }
+
+    public void editMyFakeCity(String fakeCity) {
+        search.sendKeys(fakeCity);
+        editCityButton.click();
+        insertName.sendKeys(fakeCity + "- edited");
+        saveButton.click();
+    }
+
+    public String findMyEditedCity(String fakeCity) {
+        search.sendKeys(fakeCity + "- edited");
+        return nameColumn.getText();
     }
 }

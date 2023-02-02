@@ -1,5 +1,6 @@
 package tests;
 
+import com.github.javafaker.Faker;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -20,8 +21,8 @@ public class BaseTest {
     protected HomePage homePage;
     protected LoginPage loginPage;
     protected SignupPage signupPage;
-
     protected AdminCitiesPage adminCitiesPage;
+    Faker faker = new Faker();
 
     @BeforeClass
     public void beforeClass() {

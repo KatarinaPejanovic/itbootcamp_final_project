@@ -1,10 +1,13 @@
 package tests;
 
 import org.testng.Assert;
+import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
 public class AdminCitiesTest extends BaseTest {
+
+    private String fakeCity = faker.address().city();
 
     @BeforeMethod
     public void beforeMethod() {
@@ -12,6 +15,11 @@ public class AdminCitiesTest extends BaseTest {
         homePage.visitLogIn();
         loginPage.doLogin("admin@admin.com", "12345");
         homePage.visitAdminCities();
+    }
+
+    @AfterMethod
+    public void afterMethod() {
+        homePage.doLogOut();
     }
 
     @Test
@@ -22,7 +30,23 @@ public class AdminCitiesTest extends BaseTest {
 
     @Test
     public void t2CreateNewCity() {
-        adminCitiesPage.createNewCity();
+        adminCitiesPage.createNewCity(fakeCity);
         Assert.assertTrue(adminCitiesPage.readCitySavedMessage().contains("Saved successfully"));
     }
+
+    @Test
+    public void t3EditCity() {
+        adminCitiesPage.editMyFakeCity(fakeCity);
+        Assert.assertTrue(adminCitiesPage.readCitySavedMessage().contains("Saved successfully"));
+    }
+
+    @Test
+    public void t4SearchCity() {
+        Assert.assertTrue(adminCitiesPage.findMyEditedCity(fakeCity).contains(fakeCity + "- edited"));
+    }
+
+//    @Test
+//    public void t5DeleteCity() {
+//
+//    }
 }
