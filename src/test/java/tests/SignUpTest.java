@@ -1,5 +1,7 @@
 package tests;
 
+import org.openqa.selenium.By;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
@@ -33,9 +35,9 @@ public class SignUpTest extends BaseTest {
     }
 
     @Test
-    public void t4SignUp() throws InterruptedException {
+    public void t4SignUp() {
         signupPage.doSignUp("Katarina P", signupPage.getFakeEmail(), "myPass12345"); //fakeEmail sam stavila, zato sto ne kreira novi account ako je prilikom svakog testiranja isti email, vec izbacuje error E-mail already exists
-        Thread.sleep(2000);
+        driverWait.until(ExpectedConditions.textToBePresentInElementLocated(By.xpath("//*[@id=\"app\"]/div[4]/div/div"), "Verify your account"));
         Assert.assertTrue(homePage.readVerifyAccountMssg().contains("Verify your account"));
     }
 }

@@ -1,6 +1,8 @@
 package tests;
 
 import com.github.javafaker.Faker;
+import org.openqa.selenium.By;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Factory;
@@ -40,17 +42,17 @@ public class LoginTest extends BaseTest {
     }
 
     @Test
-    public void t5LogIn() throws InterruptedException {
+    public void t5LogIn() {
         loginPage.doLogin("admin@admin.com", "12345");
-        Thread.sleep(2000);
+        driverWait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//*[@id=\"app\"]/div[1]/div/header/div/div[3]/a[1]")));
         Assert.assertTrue(driver.getCurrentUrl().contains("/home"));
     }
 
     @Test
-    public void t6LogOut() throws InterruptedException {  //da li moze nesto da se skrati??
+    public void t6LogOut() {  //da li moze nesto da se skrati??
         Assert.assertTrue(homePage.getLogOut().isDisplayed());
         homePage.doLogOut();
-        Thread.sleep(2000);
+        driverWait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//*[@id=\"app\"]/div/div/header/div/div[3]/a[3]")));
         Assert.assertTrue(driver.getCurrentUrl().contains("/login"));
         driver.get("https://vue-demo.daniel-avellaneda.com/home");
         Assert.assertTrue(driver.getCurrentUrl().contains("/login"));

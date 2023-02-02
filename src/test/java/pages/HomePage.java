@@ -3,6 +3,7 @@ package pages;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class HomePage extends BasePage {
@@ -16,6 +17,12 @@ public class HomePage extends BasePage {
 
     @FindBy(xpath = "//*[@id=\"app\"]/div[4]/div/div")
     private WebElement verifyAccount;
+
+    @FindBy(xpath = "//*[@id=\"app\"]/div[1]/div/header/div/div[3]/button[1]")
+    private WebElement admin;
+
+    @FindBy(className = "btnAdminCities")
+    private WebElement adminCities;
 
     public HomePage(WebDriver driver, WebDriverWait driverWait) {
         super(driver, driverWait);
@@ -39,5 +46,10 @@ public class HomePage extends BasePage {
 
     public String readVerifyAccountMssg() {
         return verifyAccount.getText();
+    }
+
+    public void visitAdminCities() {
+        admin.click();
+        adminCities.click();
     }
 }

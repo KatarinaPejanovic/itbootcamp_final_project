@@ -8,7 +8,6 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class LoginPage extends BasePage {
 
-    Faker faker = new Faker();
     @FindBy(id = "email")
     private WebElement email;
 
