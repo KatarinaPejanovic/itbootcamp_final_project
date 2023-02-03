@@ -4,7 +4,7 @@ import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
-public class AuthRoutesTests extends BaseTest {
+public class AuthRoutesTest extends BaseTest {
 
     @BeforeMethod
     public void beforeMethod() {

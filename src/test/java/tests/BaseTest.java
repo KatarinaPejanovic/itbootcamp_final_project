@@ -20,6 +20,7 @@ public class BaseTest {
     protected SignupPage signupPage;
     protected AdminCitiesPage adminCitiesPage;
     protected AuthRoutesPage authRoutesPage;
+    protected LocalePage localePage;
     Faker faker = new Faker();
 
     @BeforeClass
@@ -34,6 +35,7 @@ public class BaseTest {
         signupPage = new SignupPage(driver, driverWait);
         adminCitiesPage = new AdminCitiesPage(driver, driverWait);
         authRoutesPage = new AuthRoutesPage(driver, driverWait);
+        localePage = new LocalePage(driver, driverWait);
     }
 
     @BeforeMethod
