@@ -45,8 +45,11 @@ public class AdminCitiesTest extends BaseTest {
         Assert.assertTrue(adminCitiesPage.findMyEditedCity(fakeCity).contains(fakeCity + "- edited"));
     }
 
-//    @Test
-//    public void t5DeleteCity() {
-//
-//    }
+    @Test
+    public void t5DeleteCity() throws InterruptedException {
+        Assert.assertTrue(adminCitiesPage.findMyEditedCity(fakeCity).contains(fakeCity + "- edited"));
+        adminCitiesPage.delete();
+        Assert.assertTrue(adminCitiesPage.readCityDeletedMessage().contains("Deleted successfully"));
+    }
+
 }

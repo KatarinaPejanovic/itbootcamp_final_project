@@ -7,10 +7,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
-import pages.AdminCitiesPage;
-import pages.HomePage;
-import pages.LoginPage;
-import pages.SignupPage;
+import pages.*;
 
 import java.time.Duration;
 
@@ -22,6 +19,7 @@ public class BaseTest {
     protected LoginPage loginPage;
     protected SignupPage signupPage;
     protected AdminCitiesPage adminCitiesPage;
+    protected AuthRoutesPage authRoutesPage;
     Faker faker = new Faker();
 
     @BeforeClass
@@ -35,6 +33,7 @@ public class BaseTest {
         loginPage = new LoginPage(driver, driverWait);
         signupPage = new SignupPage(driver, driverWait);
         adminCitiesPage = new AdminCitiesPage(driver, driverWait);
+        authRoutesPage = new AuthRoutesPage(driver, driverWait);
     }
 
     @BeforeMethod
