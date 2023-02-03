@@ -38,8 +38,7 @@ public class AdminCitiesPage extends BasePage {
     @FindBy(id = "delete")
     private WebElement deleteButton;
 
-    @FindBy(xpath = "/html/body/div/div[7]/div/div/div[2]/button[2]/span")
-    //todo nadji dobar xpath / class za ovaj element!!!!
+    @FindBy(css = "#app > div.v-dialog__content.v-dialog__content--active > div > div > div.v-card__actions > button.v-btn.v-btn--text.theme--light.v-size--default.red--text.text--lighten3")
     private WebElement secondDeleteButton;
 
     @FindBy(xpath = "//*[@id=\"app\"]/div[1]/main/div/div[2]/div/div[3]/div/div/div/div/div[1]")
@@ -74,12 +73,11 @@ public class AdminCitiesPage extends BasePage {
 
     public void delete() {
         deleteButton.click();
-        driverWait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//*[@id=\"app\"]/div[7]/div/div")));
-        // secondDeleteButton.click(); //todo obrisati komentar nakon sto nadjes ispravan xpath za delete
+        driverWait.until(ExpectedConditions.presenceOfElementLocated(By.cssSelector("#app > div.v-dialog__content.v-dialog__content--active > div > div > div.v-card__actions > button.v-btn.v-btn--text.theme--light.v-size--default.red--text.text--lighten3")));
+        secondDeleteButton.click();
     }
 
     public String readCityDeletedMessage() {
-        driverWait.until(ExpectedConditions.presenceOfElementLocated((By) cityDeletedMessage));
         return cityDeletedMessage.getText();
     }
 }
