@@ -21,8 +21,8 @@ public class LoginTest extends BaseTest {
 
     @Test
     public void t2CheckInputType() {
-        Assert.assertEquals(loginPage.getEmailAttributeType(), "email");
-        Assert.assertEquals(loginPage.getPassAttributeType(), "password");
+        Assert.assertEquals(loginPage.getAttributeType(loginPage.getEmail()), "email");
+        Assert.assertEquals(loginPage.getAttributeType(loginPage.getPassword()), "password");
     }
 
     @Test
