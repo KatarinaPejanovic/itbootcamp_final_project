@@ -1,11 +1,9 @@
 package tests;
 
-import com.github.javafaker.Faker;
 import org.openqa.selenium.By;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
-import org.testng.annotations.Factory;
 import org.testng.annotations.Test;
 
 public class LoginTest extends BaseTest {
@@ -49,7 +47,7 @@ public class LoginTest extends BaseTest {
     }
 
     @Test
-    public void t6LogOut() {  //da li moze nesto da se skrati??
+    public void t6LogOut() {
         Assert.assertTrue(homePage.getLogOut().isDisplayed());
         homePage.doLogOut();
         driverWait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//*[@id=\"app\"]/div/div/header/div/div[3]/a[3]")));

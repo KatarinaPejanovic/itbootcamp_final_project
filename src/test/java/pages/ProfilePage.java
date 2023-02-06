@@ -1,6 +1,5 @@
 package pages;
 
-import com.github.javafaker.Faker;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -55,31 +54,6 @@ public class ProfilePage extends BasePage {
         myProfile.click();
     }
 
-//    public String getFakeName() {
-//        String fakeName = faker.name().firstName();
-//        return fakeName;
-//    }
-
-//    public String getFakePhone() {
-//        String fakePhoneNum = String.valueOf(faker.phoneNumber().cellPhone());
-//        return fakePhoneNum;
-//    }
-
-//    public String getFakeCountry() {
-//        String fakeCountry = faker.country().name();
-//        return fakeCountry;
-//    }
-
-//    public String getFakeTwitter() {
-//        String fakeTwitter = faker.internet().url();
-//        return fakeTwitter;
-//    }
-
-//    public String getFakeGit() {
-//        String fakeGit = faker.internet().url();
-//        return fakeGit;
-//    }
-
 
     public void insertData(String name, String phone, String country, String twitter, String git) throws InterruptedException {
         Thread.sleep(1000);
@@ -100,7 +74,7 @@ public class ProfilePage extends BasePage {
         gitField.sendKeys("https://" + git);
         Thread.sleep(1000);
         saveButton.click();
-        Thread.sleep(5000);
+        Thread.sleep(2000);
     }
 
     public String readProfileEditedMessage() {

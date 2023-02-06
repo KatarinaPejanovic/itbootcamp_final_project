@@ -52,5 +52,4 @@ public class AdminCitiesTest extends BaseTest {
         Thread.sleep(2000);
         Assert.assertTrue(adminCitiesPage.readCityDeletedMessage().contains("Deleted successfully"));
     }
-
 }
